@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-  <Posts />
+    <Places />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import Posts from './components/Posts.vue'
+import Places from "./components/Places.vue";
 
 export default {
- name: 'App',
+  name: "App",
   components: {
-    Posts
-  }
-}
+    Places,
+  },
+};
 </script>
 
 <style>
