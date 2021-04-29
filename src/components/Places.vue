@@ -1,14 +1,12 @@
 <template>
-  <h1>Vue 3 and Fetch Example</h1>
-  <div>
-    <ul v-if="!loading && data && data.length">
-      <li v-for="(post, index) of data" :key="index">
-        <p>
-          <strong>{{ post.name }}</strong>
-        </p>
-        <p></p>
-      </li>
-    </ul>
+  <div v-if="!loading && data && data.length" class="places">
+    <div class="card" v-for="(place, index) of data" :key="index">
+      <div class="card-info">
+        <h4>{{ place.name }}</h4>
+        <p>{{ place.description }}</p>
+      </div>
+      <img :src="place.image" />
+    </div>
   </div>
 
   <p v-if="loading">Still loading..</p>
@@ -47,7 +45,7 @@ export default {
           params: {
             request_type: "call_function",
             finality: "final",
-            account_id: "dev-1619683677028-2985382",
+            account_id: "dev-1619693973968-7584817",
             method_name: "getPlaces",
             args_base64: "e30=",
           },
@@ -100,3 +98,32 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.places {
+  background-color: #fafafa;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  background-color: white;
+  width: 22rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-info {
+  padding: 2rem;
+}
+.card img {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  padding: 0rem !important;
+  padding-top: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+</style>
